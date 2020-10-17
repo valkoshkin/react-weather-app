@@ -14,16 +14,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#ffffff",
     borderRadius: "10px",
     minWidth: "300px",
-    width: "60%",
+    width: "50%",
     "&:hover": {
       boxShadow: "0 1px 6px 2px rgba(0, 0, 0, 0.25)",
       transition: "box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     },
   },
   input: {
+    fontFamily: "Montserrat, sans-serif",
     marginLeft: theme.spacing(2),
     flex: 1,
-    fontFamily: "Roboto",
     fontSize: "24px",
   },
   iconButton: {

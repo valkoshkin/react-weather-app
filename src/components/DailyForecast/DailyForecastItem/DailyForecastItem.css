@@ -1,0 +1,56 @@
+.daily-forecast-date {
+    font-size: 24px;
+    color: #162635;
+}
+
+.daily-forecast-dayofweek {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #162635;
+}
+
+.daily-forecast-temperature {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.daily-forecast-temperature-max {
+    color: #162635;
+}
+
+.daily-forecast-temperature-min {
+    color: #243d51;
+}
+
+.daily-forecast-weather {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.daily-forecast-chance-of-rain {
+    display: flex;
+    align-items: center;
+}
+
+.daily-forecast-chance-of-rain-icon {
+    padding-bottom: 5px;
+}
+
+.daily-forecast-wind-speed {
+    display: flex;
+    align-items: center;
+}
+
+.daily-forecast-wind-speed-icon {
+    margin: 0 5px;
+}

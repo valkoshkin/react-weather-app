@@ -1,5 +1,6 @@
 import React from "react";
 import "./HourlyForecastItem.css";
+import PropTypes from "prop-types";
 
 export const HourlyForecastItem = (props) => {
   const parseTemperature = (temperature) => {
@@ -29,4 +30,8 @@ export const HourlyForecastItem = (props) => {
       <span>{props.hourlyForecast.wind_kph} km/h</span>
     </div>
   );
+};
+
+HourlyForecastItem.propTypes = {
+  hourlyForecast: PropTypes.any,
 };

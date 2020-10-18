@@ -3,6 +3,7 @@ import "./HourlyForecast.css";
 import Paper from "@material-ui/core/Paper";
 import { HourlyForecastItem } from "./HourlyForecastItem/HourlyForecastItem";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -36,4 +37,9 @@ export const HourlyForecast = (props) => {
       })}
     </Paper>
   );
+};
+
+HourlyForecast.propTypes = {
+  weatherInfo: PropTypes.any,
+  indexOfClicked: PropTypes.number,
 };

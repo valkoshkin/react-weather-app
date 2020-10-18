@@ -4,6 +4,7 @@ import InputBase from "@material-ui/core/InputBase";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { IconButton } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +47,9 @@ export const CityInput = (props) => {
   };
 
   const onSubmit = () => {
-    props.onSubmit(city);
+    if (props.currentCity.toLowerCase() !== city.toLowerCase()) {
+      props.onSubmit(city);
+    }
   };
 
   return (
@@ -69,4 +72,9 @@ export const CityInput = (props) => {
       </IconButton>
     </Paper>
   );
+};
+
+CityInput.propTypes = {
+  currentCity: PropTypes.string,
+  onSubmit: PropTypes.func,
 };

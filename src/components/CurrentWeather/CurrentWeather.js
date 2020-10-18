@@ -2,6 +2,7 @@ import React from "react";
 import "./CurrentWeather.css";
 import { LocationOnTwoTone } from "@material-ui/icons";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   icon: {
@@ -37,4 +38,8 @@ export const CurrentWeather = (props) => {
       </div>
     </div>
   );
+};
+
+CurrentWeather.propTypes = {
+  weatherInfo: PropTypes.any,
 };

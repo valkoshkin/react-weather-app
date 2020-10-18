@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as ChanceOfRain } from "../../../assets/chance-of-rain.svg";
 import { ReactComponent as WindSpeed } from "../../../assets/wind-speed.svg";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -131,4 +132,11 @@ export const DailyForecastItem = (props) => {
       </div>
     </Paper>
   );
+};
+
+DailyForecastItem.propTypes = {
+  index: PropTypes.number,
+  handleClick: PropTypes.func,
+  forecastDay: PropTypes.any,
+  isClicked: PropTypes.bool,
 };

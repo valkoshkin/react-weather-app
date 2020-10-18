@@ -1,6 +1,7 @@
 import React from "react";
 import "./DailyForecast.css";
 import { DailyForecastItem } from "./DailyForecastItem/DailyForecastItem";
+import PropTypes from "prop-types";
 
 export const DailyForecast = (props) => {
   const forecastDayArray = props.weatherInfo.forecast.forecastday;
@@ -20,4 +21,10 @@ export const DailyForecast = (props) => {
       })}
     </div>
   );
+};
+
+DailyForecast.propTypes = {
+  handleClick: PropTypes.func,
+  weatherInfo: PropTypes.any,
+  indexOfClicked: PropTypes.number,
 };

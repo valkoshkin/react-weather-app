@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const CityInput = () => {
+export const CityInput = (props) => {
   const styles = useStyles();
   const [city, setCity] = useState();
 
@@ -46,7 +46,7 @@ export const CityInput = () => {
   };
 
   const onSubmit = () => {
-    console.log(city);
+    props.onSubmit(city);
   };
 
   return (

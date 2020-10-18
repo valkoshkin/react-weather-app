@@ -2,42 +2,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    cursor: default;
     margin-top: 30px;
-    background: #ffffff;
+    margin-bottom: 30px;
     border-radius: 10px;
-    max-width: 50%;
     min-width: 300px;
-    box-shadow: 0 2px 1px -1px rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 3px 0 rgba(0,0,0,0.12);
-}
-
-.current-weather:hover {
-    box-shadow: 0 1px 6px 2px rgba(0, 0, 0, 0.25);
-    transition: box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    max-width: 50%;
+    cursor: default;
+    user-select: none;
 }
 
 .current-weather-location {
     display: flex;
     align-items: center;
     text-align: center;
-    color: #162635;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #162635;
     font-size: 32px;
 }
 
 .current-weather-info {
     display: flex;
     align-items: center;
+    margin-top: 7px;
 }
 
 .current-weather-info-text {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 5px;
     align-items: center;
     text-align: center;
-    color: #162635;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #162635;
     font-size: 26px;
 }
 

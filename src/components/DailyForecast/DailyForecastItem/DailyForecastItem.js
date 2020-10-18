@@ -18,13 +18,13 @@ const useStyles = makeStyles(() => ({
     cursor: "pointer",
     userSelect: "none",
     "&:hover": {
-      boxShadow: "0 1px 6px 2px #5c6bc0",
+      boxShadow: "0 1px 6px 2px #00000040",
       transition: "box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     },
   },
   active: {
-    backgroundColor: "#e8eaf6",
-    boxShadow: "0 1px 6px 2px #5c6bc0",
+    backgroundColor: "#d1eaff",
+    boxShadow: "0 1px 6px 2px #00000040",
   },
   icon: {
     marginTop: "10px",

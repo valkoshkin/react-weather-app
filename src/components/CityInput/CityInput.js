@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "300px",
     width: "50%",
     "&:hover": {
-      boxShadow: "0 1px 6px 2px rgba(0, 0, 0, 0.25)",
+      boxShadow: "0 1px 6px 2px #00000040",
       transition: "box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     },
   },

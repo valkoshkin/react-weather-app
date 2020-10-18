@@ -26,9 +26,7 @@ export const HourlyForecastItem = (props) => {
       <span className="hourly-forecast-item-temperature">
         {parseTemperature(props.hourlyForecast.temp_c)}°
       </span>
-      <span>
-        {props.hourlyForecast.wind_kph} km/h, {props.hourlyForecast.wind_dir}
-      </span>
+      <span>{props.hourlyForecast.wind_kph} km/h</span>
     </div>
   );
 };

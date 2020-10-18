@@ -21,7 +21,7 @@ function App() {
   const getResponse = async (location) => {
     setLoading(true);
     let response = await fetch(
-      "http://api.weatherapi.com/v1/forecast.json?key=" +
+      "https://api.weatherapi.com/v1/forecast.json?key=" +
         API_KEY +
         "&q=" +
         location +

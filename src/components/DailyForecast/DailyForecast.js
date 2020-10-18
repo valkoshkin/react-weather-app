@@ -7,11 +7,14 @@ export const DailyForecast = (props) => {
 
   return (
     <div className="daily-forecast">
-      {forecastDayArray.map((value) => {
+      {forecastDayArray.map((value, index) => {
         return (
           <DailyForecastItem
+            key={index}
+            index={index}
             handleClick={props.handleClick}
             forecastDay={value}
+            isClicked={props.indexOfClicked === index}
           />
         );
       })}

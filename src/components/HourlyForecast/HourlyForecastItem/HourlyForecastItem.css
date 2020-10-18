@@ -1,0 +1,19 @@
+.hourly-forecast-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 4px 7px;
+    font-size: 14px;
+    color: #162635;
+}
+
+.hourly-forecast-item-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.hourly-forecast-item-temperature {
+    font-size: 18px;
+}
+

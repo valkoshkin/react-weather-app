@@ -5,14 +5,14 @@ import { DailyForecast } from "./components/DailyForecast/DailyForecast";
 import { HourlyForecast } from "./components/HourlyForecast/HourlyForecast";
 
 function App() {
-  const [isClicked, setClicked] = useState(false);
+  const [indexOfClicked, setIndexOfClicked] = useState(-1);
   const [isResponseOk, setResponseOk] = useState(false);
   const [weatherInfo, setWeatherInfo] = useState();
-
-  const handleClick = () => {
-    isClicked === false ? setClicked(true) : setClicked(false);
-  };
   const API_KEY = "0a97cd0d9dde43c5bb2214640202906";
+
+  const handleClick = (index) => {
+    setIndexOfClicked(index);
+  };
 
   const getResponse = async (location) => {
     let response = await fetch(
@@ -26,7 +26,7 @@ function App() {
       setWeatherInfo(await response.json());
       setResponseOk(true);
     } else {
-      alert("HTTP error: " + response.status);
+      alert("Error code: " + response.status + "\nTry again later.");
     }
   };
 
@@ -36,9 +36,18 @@ function App() {
       {isResponseOk && <CurrentWeather weatherInfo={weatherInfo} />}
 
       {isResponseOk && (
-        <DailyForecast handleClick={handleClick} weatherInfo={weatherInfo} />
+        <DailyForecast
+          handleClick={handleClick}
+          weatherInfo={weatherInfo}
+          indexOfClicked={indexOfClicked}
+        />
       )}
-      {isClicked && <HourlyForecast />}
+      {indexOfClicked !== -1 && (
+        <HourlyForecast
+          weatherInfo={weatherInfo}
+          indexOfClicked={indexOfClicked}
+        />
+      )}
     </div>
   );
 }

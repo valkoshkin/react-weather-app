@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./DailyForecastItem.css";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,6 +22,10 @@ const useStyles = makeStyles(() => ({
       transition: "box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     },
   },
+  active: {
+    backgroundColor: "#e8eaf6",
+    boxShadow: "0 1px 6px 2px #5c6bc0",
+  },
   icon: {
     marginTop: "10px",
     color: "#162635",
@@ -30,11 +34,29 @@ const useStyles = makeStyles(() => ({
 
 export const DailyForecastItem = (props) => {
   const styles = useStyles();
-  // const [isClicked, setClicked] = useState(false);
+  const [isClicked, setClicked] = useState(props.isClicked);
 
-  // const handleClick = () => {
-  //   isClicked === false ? setClicked(true) : setClicked(false);
-  // };
+  useEffect(() => {
+    setClicked(props.isClicked);
+  }, [props.isClicked]);
+
+  const setStyles = () => {
+    if (!isClicked) {
+      return styles.root;
+    } else {
+      return `${styles.root} ${styles.active}`;
+    }
+  };
+
+  const handleClick = () => {
+    if (!isClicked) {
+      setClicked(true);
+      props.handleClick(props.index);
+    } else {
+      setClicked(false);
+      props.handleClick(-1);
+    }
+  };
 
   const parseDate = (date) => {
     const dateArray = date.split("-");
@@ -78,37 +100,35 @@ export const DailyForecastItem = (props) => {
   };
 
   return (
-    <>
-      <Paper className={styles.root} onClick={() => props.handleClick()}>
-        <div className="daily-forecast-date">
-          {parseDate(props.forecastDay.date)}
+    <Paper className={setStyles()} onClick={() => handleClick()}>
+      <div className="daily-forecast-date">
+        {parseDate(props.forecastDay.date)}
+      </div>
+      <div className="daily-forecast-dayofweek">
+        {getDayOfWeek(props.forecastDay.date)}
+      </div>
+      <img
+        src={props.forecastDay.day.condition.icon}
+        alt={props.forecastDay.day.condition.description}
+      />
+      <div className="daily-forecast-temperature">
+        <span className="daily-forecast-temperature-max">
+          {parseTemperature(props.forecastDay.day.maxtemp_c)}°C
+        </span>
+        <span className="daily-forecast-temperature-min">
+          {parseTemperature(props.forecastDay.day.mintemp_c)}°C
+        </span>
+      </div>
+      <div className="daily-forecast-weather">
+        <div className="daily-forecast-chance-of-rain">
+          <ChanceOfRain className="daily-forecast-chance-of-rain-icon" />
+          {props.forecastDay.day.daily_chance_of_rain}%
         </div>
-        <div className="daily-forecast-dayofweek">
-          {getDayOfWeek(props.forecastDay.date)}
+        <div className="daily-forecast-wind-speed">
+          <WindSpeed className="daily-forecast-wind-speed-icon" />
+          {props.forecastDay.day.maxwind_kph} km/h
         </div>
-        <img
-          src={props.forecastDay.day.condition.icon}
-          alt={props.forecastDay.day.condition.description}
-        />
-        <div className="daily-forecast-temperature">
-          <span className="daily-forecast-temperature-max">
-            {parseTemperature(props.forecastDay.day.maxtemp_c)}°C
-          </span>
-          <span className="daily-forecast-temperature-min">
-            {parseTemperature(props.forecastDay.day.mintemp_c)}°C
-          </span>
-        </div>
-        <div className="daily-forecast-weather">
-          <div className="daily-forecast-chance-of-rain">
-            <ChanceOfRain className="daily-forecast-chance-of-rain-icon" />
-            {props.forecastDay.day.daily_chance_of_rain}%
-          </div>
-          <div className="daily-forecast-wind-speed">
-            <WindSpeed className="daily-forecast-wind-speed-icon" />
-            {props.forecastDay.day.maxwind_kph} km/h
-          </div>
-        </div>
-      </Paper>
-    </>
+      </div>
+    </Paper>
   );
 };

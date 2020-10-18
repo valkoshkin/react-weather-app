@@ -30,8 +30,34 @@ export const HourlyForecast = (props) => {
   const hourlyForecastArray =
     props.weatherInfo.forecast.forecastday[props.indexOfClicked].hour;
 
+  const parseDate = (date) => {
+    const dateArray = date.split("-");
+    const day = dateArray[2];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const month = months[parseInt(dateArray[1]) - 1];
+    return month + " " + day;
+  };
+
   return (
     <Paper className={styles.root}>
+      <div className="hourly-forecast-date">
+        {parseDate(
+          props.weatherInfo.forecast.forecastday[props.indexOfClicked].date
+        )}
+      </div>
       {hourlyForecastArray.map((value, index) => {
         return <HourlyForecastItem key={index} hourlyForecast={value} />;
       })}

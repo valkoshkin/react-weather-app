@@ -9,7 +9,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(background.jpg);
+  background-image: url(./assets/background.jpg);
+  background-attachment: fixed;
   background-color: #a6d5df;
   background-size: 100%;
   background-position: bottom;

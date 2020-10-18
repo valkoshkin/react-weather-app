@@ -4,12 +4,14 @@ import { CurrentWeather } from "./components/CurrentWeather/CurrentWeather";
 import { DailyForecast } from "./components/DailyForecast/DailyForecast";
 import { HourlyForecast } from "./components/HourlyForecast/HourlyForecast";
 import { Loader } from "./components/Loader/Loader";
+import swal from "sweetalert";
 
 function App() {
   const [indexOfClicked, setIndexOfClicked] = useState(-1);
-  const [isResponseOk, setResponseOk] = useState(false);
+  const [isResponseStatusOk, setResponseStatus] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [weatherInfo, setWeatherInfo] = useState();
+  const [currentCity, setCurrentCity] = useState("");
   const API_KEY = "0a97cd0d9dde43c5bb2214640202906";
 
   const handleClick = (index) => {
@@ -27,9 +29,18 @@ function App() {
     );
     if (response.ok) {
       setWeatherInfo(await response.json());
-      setResponseOk(true);
+      setResponseStatus(true);
+      setCurrentCity(location);
     } else {
-      alert("Error code: " + response.status + "\nTry again later.");
+      swal({
+        title: "Error :(",
+        text:
+          "Nothing was found for your request.\nPlease check the data and re-enter.",
+        icon: "error",
+        buttons: {
+          cancel: "Ok",
+        },
+      });
     }
     setLoading(false);
   };
@@ -38,8 +49,8 @@ function App() {
     <>
       {isLoading && <Loader />}
       <div className="wrapper">
-        <CityInput onSubmit={getResponse} />
-        {!isLoading && isResponseOk && (
+        <CityInput onSubmit={getResponse} currentCity={currentCity} />
+        {!isLoading && isResponseStatusOk && (
           <>
             <CurrentWeather weatherInfo={weatherInfo} />
             <DailyForecast

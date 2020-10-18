@@ -35,7 +35,7 @@ function App() {
       swal({
         title: "Error :(",
         text:
-          "Nothing was found for your request.\nPlease check the data and re-enter.",
+          "Nothing was found for your request.\nPlease check the data and try again.",
         icon: "error",
         buttons: {
           cancel: "Ok",
